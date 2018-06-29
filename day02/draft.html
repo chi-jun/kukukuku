@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+
+<body>
+
+    <button class="f_btn">反选</button>
+    <button class="q_btn">全选</button>
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <input type="checkbox" name="">
+    <script>
+        $(function() {
+            $('.f_btn').click(function() {
+                //checked判断复选框选中没
+                $("input[type=checkbox]").prop('checked', !$("input[type=checkbox]").prop('checked'));
+            })
+            $('.q_btn').click(function() {
+                $("input[type='checkbox']").prop("checked", true);
+            })
+        })
+    </script>
+</body>
+
+</html>

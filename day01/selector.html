@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <h1 class="a">lemon</h1>
+    <h1 class="a">laoxie</h1>
+    <div class="div">
+        <h1>Tom</h1>
+    </div>
+
+    <script>
+        /*
+                     获取元素节点的方法，用的是css选择器
+                */
+
+        //获取到的是jq对象
+        console.log($('h1')[0]);
+        console.log($('.a'));
+
+
+        //可以设置多个相同元素的样式
+        $('h1').css({
+            color: '#58bc58'
+        });
+
+        // 通过下标 0 的结果来判断 DOM 元素是否存在
+        var result = $('h5')[0] ? '存在' : '不存在';
+        console.log(result);
+
+        //动态生成元素节点
+        $('<h3>Dk</h3>').appendTo(".div");
+
+        //获取页面中所有h1元素的第一个
+        console.log($('h1').first());
+        //获取页面中所有h1元素的最后一个
+        console.log($('h1').last());
+    </script>
+
+</body>
+
+</html>

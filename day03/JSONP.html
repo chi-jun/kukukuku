@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <h1>JSONP</h1>
+    <script>
+        /*
+                jsonp
+                    1. 利用外部资源文件是没有域的限制，从而实现跨域请求
+                    2. 外部资源文件的接口须要支持 JSONP 的请求
+                    3. 动态创建 script，api 放到 src 属性
+                    4. 只支持 get 请求，还需要后端编程设置去支持。
+                    5. 使用场景会比较少
+
+                */
+        function getData(res) {
+            console.log(res);
+        }
+        $(function() {
+            //动态生成script标签，并把它放在body里面
+            $('<script>').prop('src', 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&cb=getData&wd=广州天气').appendTo('body')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+</head>
+
+<body>
+
+    <h1 data-age="22">Tom</h1>
+    <input type="text" id="username"><br>
+    <input type="text" id="pwd"><br>
+    <input type="button" value="Login">
+
+    <script>
+        $(function() {
+
+            //添加属性和属性值
+            $('h1').attr('name', 'tom');
+            //自定义属性的不会显示在页面中
+            $('h1').data('name', 'laoxie');
+            console.log($('h1').data('age'));
+
+
+            //事件的写法
+            $('input[type=button]').on('click', function(e) {
+                e = e || window.event;
+                var taregt = e.target || e.srcElement;
+                console.log(taregt, e, this);
+                $.ajax({
+                    url: 'http://10.3.136.5:1803/MySQL/mysql.php',
+                    data: {
+                        uname: $('#username').val().trim(),
+                        pwd: $('#pwd').val().trim()
+                    },
+                    type: 'post',
+                    beforeSend: function() {
+                        //发起请求前
+                        //1 
+                    },
+                    success: function(res) {
+                        // ===> status == 200
+                        //3
+                    },
+                    error: function(error) {
+                        //===>status == 500 || 404
+                        //3
+
+                        console.log(this)
+                    }.bind(this),
+                    complete: function(data) {
+                        //====reagyState == 4
+                    }
+                })
+
+                //停止事件   $('input[type=button]').on('click')
+
+
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

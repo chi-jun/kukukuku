@@ -1,0 +1,27 @@
+<div>
+    <ul>
+        <li>
+            <div id="datagrid"></div>
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    $('#datagrid').datagrid({
+        url: 'http://api-lybz.jcebing.com:8089/api/Vendor/GetPageList',
+        method: 'post',
+        data: {
+            pageSize: 10,
+            page: 1
+        },
+        tools: {
+            add: {
+                text: "i添加供应商",
+                event: function() {
+                    $('.cj-content').load('supplier.html');
+                }
+            }
+        }
+    })
+</script>

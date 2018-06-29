@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var P1 = new Promise(function(resolve, reject) {
+            window.setTimeout(function() {
+                reject('error');
+            }, 2000)
+        })
+        P1.then(function() {
+
+        }).catch(function(error) {
+            console.log('error ->' + error)
+        })
+
+        new Promise(function(resolve, reject) {
+            window.setTimeout(function() {
+                resolve(1);
+            }, 1000)
+        }).then(function(value) {
+            console.log(value);
+            return new Promise(function(resolve, reject) {
+                window.setTimeout(function() {
+                    resolve(2);
+                }, 3000)
+            })
+        }).then(function(value) {
+            console.log(value);
+            return new Promise(function(resolve, reject) {
+                window.setTimeout(function() {
+                    resolve(3);
+                }, 500)
+            })
+        }).then(function(value) {
+            console.log(value);
+        })
+    </script>
+</body>
+
+</html>

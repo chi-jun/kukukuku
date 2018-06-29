@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="./libs/httpclient.js"></script>
+</head>
+
+<body>
+    <input type="text" id="username"><br>
+    <input type="password" name="" id="password"><br>
+    <input type="button" value="Login" id="btn_login">
+
+    <script>
+        $(function() {
+            $('#btn_login').click(function() {
+                http.post('http://api-lybz.jcebing.com:8089/api/User/Login', {
+                    username: $('#username').val().trim(),
+                    password: $('#password').val().trim()
+                }, function(_res) {
+                    if (_res.code == 0) {
+                        //存储 token
+                        window.localStorage.setItem('access_token', _res.data.result.access_token);
+                        window.location.href = 'index.html';
+                    }
+                })
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>
